@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover Sound</title>
+    <style>
+        /* Make the body full height of the screen */
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            background-color: #c41d1d;
+            /* Optional background color */
+        }
+
+        /* Styling for the image */
+        img {
+            width: 500px;
+            /* or any desired size */
+            height: auto;
+            cursor: pointer;
+            /* Makes the cursor look clickable */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Image to hover over -->
+    <img src="rocks.png" alt="Hover Image" id="hoverImage">
+
+    <!-- Hidden audio element -->
+    <audio id="hoverSound" src="sea.mp3" preload="auto"></audio>
+
+    <script>
+        // Get the image and audio elements
+        const image = document.getElementById("hoverImage");
+        const sound = document.getElementById("hoverSound");
+
+        // Start sound when mouse hovers over the image
+        image.addEventListener("mouseover", function () {
+            if (sound.paused) {
+                sound.play();  // Start playing the sound when hovering
+            }
+        });
+
+        // Stop sound when the cursor leaves the image
+        image.addEventListener("mouseout", function () {
+            sound.pause();  // Pause the sound
+            sound.currentTime = 0;  // Reset to the beginning of the audio
+        });
+    </script>
+
+</body>
+
+</html>
